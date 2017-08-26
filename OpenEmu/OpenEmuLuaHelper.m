@@ -98,6 +98,13 @@ OpenEmuLuaHelper * helperRef;
         NSLog(@"%@",@"Registering libs");
         [self registerFuncs: luaState];
         
+        NSString * directoryPath = [NSString stringWithFormat:@"%@/?.lua", [[fileURL URLByDeletingLastPathComponent] path]];
+        
+        lua_getglobal(luaState, "package");
+        lua_pushstring(luaState, [directoryPath cStringUsingEncoding:NSASCIIStringEncoding]);
+        lua_setfield(luaState, -2, "path");
+        lua_pop(luaState, 1);
+        
         NSLog(@"%@",@"Loading file");
         NSString *tempLuaPath =  fileURL.path; //[[NSBundle mainBundle] pathForResource:@"Foo" ofType:@"lua"];
         int err = luaL_loadfile(luaState, [tempLuaPath fileSystemRepresentation]);
