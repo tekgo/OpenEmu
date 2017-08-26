@@ -1,3 +1,5 @@
+# This is a test to get Lua scripting integrated into the open emu SNES-9x core. Code is not properly attributed at this time.
+
 OpenEmu
 =======
 

@@ -140,7 +140,6 @@
     [self updateGameRenderer];
     [self setupIOSurface];
     
-    _luaHelper = [[OpenEmuLuaHelper alloc] initWithDelegate: self];
 }
 
 - (void)setupProcessPollingTimer
@@ -318,6 +317,10 @@
     _gameCore = nil;
 
     return NO;
+}
+
+- (void)loadScriptAtURL:(NSURL*)url {
+    _luaHelper = [[OpenEmuLuaHelper alloc] initWithDelegate:self fileURL:url];
 }
 
 - (NSString *)decompressedPathForRomAtPath:(NSString *)aPath
@@ -631,6 +634,8 @@
         }
     }
 
+    [_luaHelper onAfterFrame];
+    [_luaHelper onGUI];
     [_gameRenderer didExecuteFrame];
 
     if(!_hasStartedAudio)
@@ -638,7 +643,6 @@
         [_gameAudio startAudio];
         _hasStartedAudio = YES;
     }
-    [_luaHelper onAfterFrame];
 }
 
 - (void)willRenderFrameOnAlternateThread

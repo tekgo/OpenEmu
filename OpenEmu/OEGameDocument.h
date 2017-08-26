@@ -114,6 +114,8 @@ enum _OEGameDocumentErrorCodes
 #pragma mark - Full Screen
 - (void)toggleFullScreen:(id)sender;
 
+- (IBAction)openScript:(id)sender;
+
 #pragma mark - OEGameViewController Methods
 
 - (void)gameViewController:(OEGameViewController *)sender didReceiveMouseEvent:(OEEvent *)event;

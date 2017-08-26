@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -31,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="about_background" id="804"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" id="796">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="796">
                         <rect key="frame" x="17" y="184" width="366" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <shadow key="shadow">
@@ -51,7 +52,7 @@
                             </binding>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="1181">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="1181">
                         <rect key="frame" x="18" y="158" width="366" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <shadow key="shadow">
@@ -76,9 +77,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="xgL-cd-0sR">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="85"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" verticallyResizable="YES" linkDetection="YES" spellingCorrection="YES" id="1l5-5j-Ds9">
+                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" linkDetection="YES" spellingCorrection="YES" id="1l5-5j-Ds9">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="85"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,8 +87,6 @@
                                     <size key="minSize" width="300" height="85"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="300" height="85"/>
-                                    <size key="maxSize" width="463" height="10000000"/>
                                     <connections>
                                         <binding destination="805" name="attributedString" keyPath="specialThanks" id="TRw-My-UUK">
                                             <dictionary key="options">
@@ -534,6 +533,12 @@ DQ
                                     <action selector="stopEmulation:" target="-1" id="fb5-He-ZSf"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Open Script" id="KKT-QH-KMm">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openScript:" target="-1" id="ZyK-xv-Xfp"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -545,7 +550,8 @@ DQ
                                     <action selector="performMiniaturize:" target="-1" id="1122"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Zoom" id="1033">
+                            <menuItem title="Zoom" keyEquivalent="m" id="1033">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                 <connections>
                                     <action selector="performZoom:" target="-1" id="1123"/>
                                 </connections>

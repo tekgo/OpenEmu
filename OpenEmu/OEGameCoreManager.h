@@ -58,5 +58,6 @@ extern NSString * const OEGameCoreErrorDomain;
 #pragma mark - Abstract methods, must be overrode in subclasses
 
 - (void)loadROMWithCompletionHandler:(void(^)(void))completionHandler errorHandler:(void(^)(NSError *))errorHandler;
+- (void)loadScriptWithURL:(NSURL*)url;
 
 @end

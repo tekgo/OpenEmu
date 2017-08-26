@@ -9,67 +9,171 @@
 #import "OpenEmuLuaHelper.h"
 #import <LuaCocoa/LuaCocoa.h>
 
+@interface OpenEmuLuaHelper ()
+
+@property(readwrite, strong) LuaCocoa *lua;
+
+@end
+
 @implementation OpenEmuLuaHelper
+
+enum LuaCallID
 {
-    LuaCocoa *lua;
-}
+    LUACALL_BEFOREEMULATION,
+    LUACALL_AFTEREMULATION,
+    LUACALL_AFTEREMULATIONGUI,
+    LUACALL_BEFOREEXIT,
+    LUACALL_BEFORESAVE,
+    LUACALL_AFTERLOAD,
+    LUACALL_ONSTART,
+    
+    LUACALL_SCRIPT_HOTKEY_1,
+    LUACALL_SCRIPT_HOTKEY_2,
+    LUACALL_SCRIPT_HOTKEY_3,
+    LUACALL_SCRIPT_HOTKEY_4,
+    LUACALL_SCRIPT_HOTKEY_5,
+    LUACALL_SCRIPT_HOTKEY_6,
+    LUACALL_SCRIPT_HOTKEY_7,
+    LUACALL_SCRIPT_HOTKEY_8,
+    LUACALL_SCRIPT_HOTKEY_9,
+    LUACALL_SCRIPT_HOTKEY_10,
+    LUACALL_SCRIPT_HOTKEY_11,
+    LUACALL_SCRIPT_HOTKEY_12,
+    LUACALL_SCRIPT_HOTKEY_13,
+    LUACALL_SCRIPT_HOTKEY_14,
+    LUACALL_SCRIPT_HOTKEY_15,
+    LUACALL_SCRIPT_HOTKEY_16,
+    
+    LUACALL_COUNT
+};
+
+static const char* luaCallIDStrings [] =
+{
+    "CALL_BEFOREEMULATION",
+    "CALL_AFTEREMULATION",
+    "CALL_AFTEREMULATIONGUI",
+    "CALL_BEFOREEXIT",
+    "CALL_BEFORESAVE",
+    "CALL_AFTERLOAD",
+    "CALL_ONSTART",
+    
+    "CALL_HOTKEY_1",
+    "CALL_HOTKEY_2",
+    "CALL_HOTKEY_3",
+    "CALL_HOTKEY_4",
+    "CALL_HOTKEY_5",
+    "CALL_HOTKEY_6",
+    "CALL_HOTKEY_7",
+    "CALL_HOTKEY_8",
+    "CALL_HOTKEY_9",
+    "CALL_HOTKEY_10",
+    "CALL_HOTKEY_11",
+    "CALL_HOTKEY_12",
+    "CALL_HOTKEY_13",
+    "CALL_HOTKEY_14",
+    "CALL_HOTKEY_15",
+    "CALL_HOTKEY_16",
+};
 
 OpenEmuLuaHelper * helperRef;
 
-- (instancetype) initWithDelegate: (id<OpenEmuLuaHelperDelegate>)delegate
+- (instancetype) initWithDelegate: (id<OpenEmuLuaHelperDelegate>)delegate fileURL:(NSURL*)fileURL
 {
     self = [super init];
     if (self) {
         self.delegate = delegate;
-        [self setupLuaBridge];
+        [self setupLuaBridgeWithFileURL: fileURL];
     }
     return self;
 }
 
-- (void)setupLuaBridge
+- (void)setupLuaBridgeWithFileURL:(NSURL*)fileURL
 {
     NSLog(@"%@",@"Starting Lua Bridge");
     @try
     {
-        lua = [[LuaCocoa alloc] init];
-        lua_State* luaState = [lua luaState];
+        self.lua = [[LuaCocoa alloc] init];
+        lua_State* luaState = [self.lua luaState];
         
-        NSString *tempLuaPath = [[NSBundle mainBundle] pathForResource:@"Foo" ofType:@"lua"];
+        NSLog(@"%@",@"Registering libs");
+        [self registerFuncs: luaState];
+        
+        NSLog(@"%@",@"Loading file");
+        NSString *tempLuaPath =  fileURL.path; //[[NSBundle mainBundle] pathForResource:@"Foo" ofType:@"lua"];
         int err = luaL_loadfile(luaState, [tempLuaPath fileSystemRepresentation]);
         if (err)
         {
             NSLog(@"luaL_loadfile failed: %s", lua_tostring(luaState, -1));
             lua_pop(luaState, 1); /* pop error message from stack */
-            lua = nil;
+            self.lua = nil;
         }
         err = lua_pcall(luaState, 0, 0, 0);
         if (err)
         {
             NSLog(@"luaL_loadfile failed: %s", lua_tostring(luaState, -1));
             lua_pop(luaState, 1); /* pop error message from stack */
-            lua = nil;
+            self.lua = nil;
         }
-        
-        [self registerFuncs:luaState];
         
         [self onGameLoaded];
     }
     @catch (NSException *exception) {
         NSLog(@"%@",@"Starting Lua Bridge failed");
-        lua = nil;
+        self.lua = nil;
     }
 }
 
+void CallRegisteredLuaFunctions(enum LuaCallID calltype);
+
 -(void)onGameLoaded {
-    [lua pcallLuaFunction:"OnGameLoaded" withSignature:"@", self];
+    [self.lua pcallLuaFunction:"OnGameLoaded" withSignature:"@", self];
+    CallRegisteredLuaFunctions(LUACALL_AFTERLOAD);
+}
+
+-(void)onStart {
+    CallRegisteredLuaFunctions(LUACALL_ONSTART);
 }
 
 -(void)onBeforeFrame {
-    [lua pcallLuaFunction:"OnFrameTick" withSignature:"@", self];
+//    [self.lua pcallLuaFunction:"OnFrameTick" withSignature:"@", self];
+    CallRegisteredLuaFunctions(LUACALL_BEFOREEMULATION);
 }
 
 -(void)onAfterFrame {
 //    [lua pcallLuaFunction:"OnFrameTick" withSignature:"@", self];
+    CallRegisteredLuaFunctions(LUACALL_AFTEREMULATION);
+}
+
+- (void)onGUI {
+    CallRegisteredLuaFunctions(LUACALL_AFTEREMULATIONGUI);
+}
+
+- (void)onBeforeSave {
+    CallRegisteredLuaFunctions(LUACALL_BEFORESAVE);
+}
+
+- (void)onExit {
+    CallRegisteredLuaFunctions(LUACALL_BEFOREEXIT);
+}
+
+void CallRegisteredLuaFunctions(enum LuaCallID calltype) {
+    assert((unsigned int)calltype < (unsigned int)LUACALL_COUNT);
+    const char* idstring = luaCallIDStrings[calltype];
+    
+        lua_State* L = [[helperRef lua] luaState];
+    
+        lua_getfield(L, LUA_REGISTRYINDEX, idstring);
+        
+        if (lua_isfunction(L, -1))
+        {
+            int errorcode = lua_pcall(L, 0, 0, 0);
+            if (errorcode)
+                NSLog(@"%@", @"error");
+        }
+        else
+        {
+            lua_pop(L, 1);
+        }
 }
 
 static int emu_emulating(lua_State *L) {
@@ -78,12 +182,24 @@ static int emu_emulating(lua_State *L) {
 }
 
 static int emu_registerexit(lua_State *L) {
-    // TODO
+    if (!lua_isnil(L,1))
+        luaL_checktype(L, 1, LUA_TFUNCTION);
+    lua_settop(L,1);
+    lua_getfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEXIT]);
+    lua_insert(L,1);
+    lua_setfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEXIT]);
+    //    StopScriptIfFinished(luaStateToUIDMap[L]);
     return 1;
 }
 
 static int gui_register(lua_State *L) {
-    // TODO
+    if (!lua_isnil(L,1))
+        luaL_checktype(L, 1, LUA_TFUNCTION);
+    lua_settop(L,1);
+    lua_getfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_AFTEREMULATIONGUI]);
+    lua_insert(L,1);
+    lua_setfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_AFTEREMULATIONGUI]);
+//    StopScriptIfFinished(luaStateToUIDMap[L]);
     return 1;
 }
 

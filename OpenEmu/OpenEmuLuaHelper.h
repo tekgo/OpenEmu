@@ -18,11 +18,16 @@
 
 @interface OpenEmuLuaHelper : NSObject
 
-- (instancetype) initWithDelegate: (id<OpenEmuLuaHelperDelegate>)delegate;
+- (instancetype) initWithDelegate: (id<OpenEmuLuaHelperDelegate>)delegate fileURL:(NSURL*)fileURL;
 
-- (void)onGameLoaded;
+-(void)onGameLoaded;
+
+- (void)onStart;
 - (void)onBeforeFrame;
 - (void)onAfterFrame;
+- (void)onGUI;
+- (void)onBeforeSave;
+- (void)onExit;
 
 @property(readwrite, weak) id<OpenEmuLuaHelperDelegate> delegate;
 

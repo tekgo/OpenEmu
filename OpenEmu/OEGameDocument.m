@@ -661,6 +661,10 @@ typedef enum : NSUInteger
         [menuItem setTitle:NSLocalizedString(@"Pause Emulation", @"")];
         return _emulationStatus == OEEmulationStatusPlaying;
     }
+    else if(action == @selector(openScript:)) {
+        
+        return YES;
+    }
 
     return YES;
 }
@@ -1492,6 +1496,19 @@ typedef enum : NSUInteger
 - (void)toggleEmulationPaused
 {
     [self toggleEmulationPaused:self];
+}
+
+- (IBAction)openScript:(id)sender
+{
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg beginWithCompletionHandler:^(NSInteger result) {
+        NSString* file = [[openDlg filenames] firstObject];
+        if ([file isKindOfClass:[NSString class]] == YES) {
+            NSURL *url = [[NSURL alloc]initFileURLWithPath: file];
+            [_gameCoreManager loadScriptWithURL:url];
+        }
+    }];
+    
 }
 
 - (void)setEnableVSync:(BOOL)enable

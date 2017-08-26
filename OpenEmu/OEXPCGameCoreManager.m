@@ -155,6 +155,10 @@
      }];
 }
 
+- (void)loadScriptWithURL:(NSURL*)url {
+    [self.gameCoreHelper loadScriptAtURL:url];
+}
+
 - (void)_startHelperProcess
 {
     OEXPCCAgentConfiguration *configuration = [OEXPCCAgentConfiguration defaultConfiguration];

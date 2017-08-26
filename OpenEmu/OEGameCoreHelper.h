@@ -54,6 +54,8 @@
 - (void)systemBindingsDidSetEvent:(OEHIDEvent *)event forBinding:(__kindof OEBindingDescription *)bindingDescription playerNumber:(NSUInteger)playerNumber;
 - (void)systemBindingsDidUnsetEvent:(OEHIDEvent *)event forBinding:(__kindof OEBindingDescription *)bindingDescription playerNumber:(NSUInteger)playerNumber;
 
+- (void)loadScriptAtURL:(NSURL*)url;
+
 @end
 
 @protocol OEGameCoreOwner <NSObject>
