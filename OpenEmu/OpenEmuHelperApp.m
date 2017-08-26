@@ -37,6 +37,7 @@
 #import "OEOpenGL3GameRenderer.h"
 #import "OESystemPlugin.h"
 #import <OpenEmuSystem/OpenEmuSystem.h>
+#import "OpenEmuLuaHelper.h"
 
 // Compression support
 #import <XADMaster/XADArchive.h>
@@ -45,7 +46,7 @@
 #define BOOL_STR(b) ((b) ? "YES" : "NO")
 #endif
 
-@interface OpenEmuHelperApp () <OEGameCoreDelegate, OEGlobalEventsHandler>
+@interface OpenEmuHelperApp () <OEGameCoreDelegate, OEGlobalEventsHandler, OpenEmuLuaHelperDelegate>
 @property BOOL loadedRom;
 
 @property(readonly) OEIntSize screenSize;
@@ -87,6 +88,7 @@
     CGFloat               _gameAspectRatio;
 
     BOOL                  _hasStartedAudio;
+    OpenEmuLuaHelper    *_luaHelper;
 }
 
 @synthesize enableVSync = _enableVSync;
@@ -137,6 +139,8 @@
     [self updateScreenSize];
     [self updateGameRenderer];
     [self setupIOSurface];
+    
+    _luaHelper = [[OpenEmuLuaHelper alloc] initWithDelegate: self];
 }
 
 - (void)setupProcessPollingTimer
@@ -576,6 +580,9 @@
 
 - (void)willExecute
 {
+    
+    [_luaHelper onBeforeFrame];
+    
     // Check if bufferSize changed. (We'll let 3D games do this.)
     // Try not to do this as it's kinda slow.
     OEIntSize previousBufferSize = _gameRenderer.surfaceSize;
@@ -631,6 +638,7 @@
         [_gameAudio startAudio];
         _hasStartedAudio = YES;
     }
+    [_luaHelper onAfterFrame];
 }
 
 - (void)willRenderFrameOnAlternateThread
@@ -742,6 +750,25 @@
 - (void)takeScreenshot:(id)sender
 {
     [self.gameCoreOwner takeScreenshot];
+}
+
+#pragma mark - OpenEmuLuaHelperDelegate
+
+- (BOOL)isCoreScriptable {
+    return [_gameCore conformsToProtocol: @protocol(OEScriptableGameCore)];
+}
+
+- (void) setData: (NSData *)data atAddress: (UInt32)address {
+    if ([self isCoreScriptable] == YES) {
+        [(id<OEScriptableGameCore>)_gameCore setData: data atAddress: address];
+    }
+}
+
+- (NSData *) getBytesAtAddress: (UInt32)address length: (UInt) length {
+    if ([self isCoreScriptable] == YES) {
+        return [(id<OEScriptableGameCore>)_gameCore getBytesAtAddress:address length: length];
+    }
+    return 0;
 }
 
 @end
