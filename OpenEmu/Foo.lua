@@ -1,8 +1,9 @@
-gui.register(function()
-print(memory.readbyte(0x7E0010))
-end)
+--gui.register(function()
+--print(memory.readbyte(0x7E0010))
+--end)
 
 print("script loaded");
 
-local info = debug.getinfo(1,'S');
-print(info.source);
+print(AND(1, 5))
+print(OR(1, 5))
+print(XOR(2, 10))

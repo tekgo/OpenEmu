@@ -92,6 +92,15 @@ OpenEmuLuaHelper * helperRef;
 - (void)setupLuaBridgeWithFileURL:(NSURL*)fileURL
 {
     NSLog(@"%@",@"Starting Lua Bridge");
+    
+    NSString * oldCWD = [[NSFileManager defaultManager] currentDirectoryPath];
+    NSString * cwd = [[fileURL URLByDeletingLastPathComponent] path];
+    
+    [[NSFileManager defaultManager] changeCurrentDirectoryPath: cwd];
+    
+    NSString * packagePath = [NSString stringWithFormat:@"%@/?.lua", cwd];
+    NSString * packagecPath = [NSString stringWithFormat:@"%@/?.dylib;%@/?.so", cwd, cwd];
+    
     @try
     {
         self.lua = [[LuaCocoa alloc] init];
@@ -100,15 +109,19 @@ OpenEmuLuaHelper * helperRef;
         NSLog(@"%@",@"Registering libs");
         [self registerFuncs: luaState];
         
-        NSString * directoryPath = [NSString stringWithFormat:@"%@/?.lua", [[fileURL URLByDeletingLastPathComponent] path]];
-        
         lua_getglobal(luaState, "package");
-        lua_pushstring(luaState, [directoryPath cStringUsingEncoding:NSASCIIStringEncoding]);
+        lua_pushstring(luaState, [packagePath cStringUsingEncoding:NSASCIIStringEncoding]);
         lua_setfield(luaState, -2, "path");
         lua_pop(luaState, 1);
         
+        lua_getglobal(luaState, "package");
+        lua_pushstring(luaState, [packagecPath cStringUsingEncoding:NSASCIIStringEncoding]);
+        lua_setfield(luaState, -2, "cpath");
+        lua_pop(luaState, 1);
+        
         NSLog(@"%@",@"Loading file");
-        NSString *tempLuaPath =  fileURL.path; //[[NSBundle mainBundle] pathForResource:@"Foo" ofType:@"lua"];
+        NSString *tempLuaPath =  fileURL.path;
+        
         int err = luaL_loadfile(luaState, [tempLuaPath fileSystemRepresentation]);
         if (err)
         {
@@ -122,6 +135,7 @@ OpenEmuLuaHelper * helperRef;
             NSLog(@"luaL_loadfile failed: %s", lua_tostring(luaState, -1));
             lua_pop(luaState, 1); /* pop error message from stack */
             self.lua = nil;
+            return;
         }
         
         [self onGameLoaded];
@@ -130,6 +144,8 @@ OpenEmuLuaHelper * helperRef;
         NSLog(@"%@",@"Starting Lua Bridge failed");
         self.lua = nil;
     }
+    
+    [[NSFileManager defaultManager] changeCurrentDirectoryPath: oldCWD];
 }
 
 void CallRegisteredLuaFunctions(enum LuaCallID calltype);
