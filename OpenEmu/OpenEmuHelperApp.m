@@ -448,6 +448,7 @@
 
 - (void)stopEmulationWithCompletionHandler:(void(^)(void))handler
 {
+    [_luaHelper onExit];
     [_pollingTimer invalidate];
     _pollingTimer = nil;
 
