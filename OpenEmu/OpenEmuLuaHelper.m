@@ -244,7 +244,7 @@ static int memory_readbyte(lua_State *L) {
         value = n[0];
     }
     
-    NSLog(@"Reading address: %x value: %u data: %@", address, value, data);
+//    NSLog(@"Reading address: %x value: %u data: %@", address, value, data);
     
     lua_settop(L,0);
     lua_pushinteger(L, value);
