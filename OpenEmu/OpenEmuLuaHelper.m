@@ -181,6 +181,11 @@ void CallRegisteredLuaFunctions(enum LuaCallID calltype);
     CallRegisteredLuaFunctions(LUACALL_BEFOREEXIT);
 }
 
+- (void)dealloc
+{
+    [self onExit];
+}
+
 void CallRegisteredLuaFunctions(enum LuaCallID calltype) {
     assert((unsigned int)calltype < (unsigned int)LUACALL_COUNT);
     const char* idstring = luaCallIDStrings[calltype];
