@@ -482,6 +482,12 @@
 		83FE965519685F4300DD8DB9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83FE965719685F4300DD8DB9 /* MainMenu.xib */; };
 		83FE965919685F6700DD8DB9 /* OEGameScanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83FE965B19685F6700DD8DB9 /* OEGameScanner.xib */; };
 		83FE966419685F8F00DD8DB9 /* OESetupAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83FE966619685F8F00DD8DB9 /* OESetupAssistant.xib */; };
+		870320A31F5CCB2000470B55 /* controller_saturn_jp.png in Resources */ = {isa = PBXBuildFile; fileRef = 870320A11F5CCB2000470B55 /* controller_saturn_jp.png */; };
+		870320A41F5CCB2000470B55 /* controller_saturn_jp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 870320A21F5CCB2000470B55 /* controller_saturn_jp@2x.png */; };
+		870320A91F5CCB3200470B55 /* Controller-Preferences-JAP.plist in Resources */ = {isa = PBXBuildFile; fileRef = 870320A81F5CCB3200470B55 /* Controller-Preferences-JAP.plist */; };
+		870320AD1F6267BF00470B55 /* saturn_library_jp.png in Resources */ = {isa = PBXBuildFile; fileRef = 870320AA1F6267BF00470B55 /* saturn_library_jp.png */; };
+		870320AE1F6267BF00470B55 /* saturn_library_jp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 870320AB1F6267BF00470B55 /* saturn_library_jp@2x.png */; };
+		870320AF1F6267BF00470B55 /* saturn_library@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 870320AC1F6267BF00470B55 /* saturn_library@2x.png */; };
 		8706346F1C27C6D3007FAA2F /* colecovision_library@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8706346E1C27C6D3007FAA2F /* colecovision_library@2x.png */; };
 		870634711C27CD3E007FAA2F /* odyssey2_library@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 870634701C27CD3E007FAA2F /* odyssey2_library@2x.png */; };
 		870634731C27CD91007FAA2F /* psp_library@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 870634721C27CD91007FAA2F /* psp_library@2x.png */; };
@@ -493,9 +499,12 @@
 		870634801C27D267007FAA2F /* OEVectrexSystemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8706347F1C27D267007FAA2F /* OEVectrexSystemController.m */; };
 		8706C3D41C2CB48C000C2893 /* controller_odyssey2_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8706C3D21C2CB48C000C2893 /* controller_odyssey2_mask@2x.png */; };
 		8706C3D51C2CB48C000C2893 /* controller_odyssey2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8706C3D31C2CB48C000C2893 /* controller_odyssey2@2x.png */; };
+		87191CC61F6F5524006D2EE3 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 87191CC51F6F5524006D2EE3 /* dsa_pub.pem */; };
 		871CE9121B0BCFB800B89E96 /* controller_pcfx_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 871CE9101B0BCFB800B89E96 /* controller_pcfx_mask@2x.png */; };
 		871CE9131B0BCFB800B89E96 /* controller_pcfx@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 871CE9111B0BCFB800B89E96 /* controller_pcfx@2x.png */; };
 		8745D75F1BF9A72B005E8699 /* OE5200SystemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745D75E1BF9A72B005E8699 /* OE5200SystemController.m */; };
+		8759F0871F560542009CBC01 /* controller_saturn_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8759F0851F560542009CBC01 /* controller_saturn_mask@2x.png */; };
+		8759F0881F560542009CBC01 /* controller_saturn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8759F0861F560542009CBC01 /* controller_saturn@2x.png */; };
 		875CC3211E221D4300E3BEB9 /* controller_tg16cd_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875CC31F1E221D4300E3BEB9 /* controller_tg16cd_mask@2x.png */; };
 		875CC3221E221D4300E3BEB9 /* controller_tg16cd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875CC3201E221D4300E3BEB9 /* controller_tg16cd@2x.png */; };
 		875CC3251E221D9800E3BEB9 /* controller_tg16_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875CC3231E221D9800E3BEB9 /* controller_tg16_mask@2x.png */; };
@@ -842,7 +851,6 @@
 		94A225FA1707614500098DA0 /* Controller-Mappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A225F31707614500098DA0 /* Controller-Mappings.plist */; };
 		94A225FB1707614500098DA0 /* Controller-Preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A225F41707614500098DA0 /* Controller-Preferences.plist */; };
 		94A225FC1707614500098DA0 /* Keyboard-Mappings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A225F51707614500098DA0 /* Keyboard-Mappings.plist */; };
-		94A225FD1707614500098DA0 /* saturn_jap_library.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A225F61707614500098DA0 /* saturn_jap_library.png */; };
 		94A225FE1707614500098DA0 /* saturn_library.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A225F71707614500098DA0 /* saturn_library.png */; };
 		94A226021707616F00098DA0 /* OEComputerSystemResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A226001707616F00098DA0 /* OEComputerSystemResponder.m */; };
 		94A22609170761D200098DA0 /* computer_library.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A22603170761D200098DA0 /* computer_library.png */; };
@@ -2176,6 +2184,12 @@
 		83FBA38014F2C857001F1299 /* genesis_library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = genesis_library.png; sourceTree = "<group>"; };
 		83FBA38214F2C870001F1299 /* gba_library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gba_library.png; sourceTree = "<group>"; };
 		83FC3CC4156D155B00F0CDB6 /* OEMainWindowContentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OEMainWindowContentController.h; sourceTree = "<group>"; };
+		870320A11F5CCB2000470B55 /* controller_saturn_jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_saturn_jp.png; sourceTree = "<group>"; };
+		870320A21F5CCB2000470B55 /* controller_saturn_jp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_saturn_jp@2x.png"; sourceTree = "<group>"; };
+		870320A81F5CCB3200470B55 /* Controller-Preferences-JAP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Controller-Preferences-JAP.plist"; sourceTree = "<group>"; };
+		870320AA1F6267BF00470B55 /* saturn_library_jp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saturn_library_jp.png; sourceTree = "<group>"; };
+		870320AB1F6267BF00470B55 /* saturn_library_jp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saturn_library_jp@2x.png"; sourceTree = "<group>"; };
+		870320AC1F6267BF00470B55 /* saturn_library@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saturn_library@2x.png"; sourceTree = "<group>"; };
 		8706346E1C27C6D3007FAA2F /* colecovision_library@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colecovision_library@2x.png"; sourceTree = "<group>"; };
 		870634701C27CD3E007FAA2F /* odyssey2_library@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "odyssey2_library@2x.png"; sourceTree = "<group>"; };
 		870634721C27CD91007FAA2F /* psp_library@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "psp_library@2x.png"; sourceTree = "<group>"; };
@@ -2188,10 +2202,13 @@
 		8706347F1C27D267007FAA2F /* OEVectrexSystemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OEVectrexSystemController.m; sourceTree = "<group>"; };
 		8706C3D21C2CB48C000C2893 /* controller_odyssey2_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_odyssey2_mask@2x.png"; sourceTree = "<group>"; };
 		8706C3D31C2CB48C000C2893 /* controller_odyssey2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_odyssey2@2x.png"; sourceTree = "<group>"; };
+		87191CC51F6F5524006D2EE3 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		871CE9101B0BCFB800B89E96 /* controller_pcfx_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_pcfx_mask@2x.png"; sourceTree = "<group>"; };
 		871CE9111B0BCFB800B89E96 /* controller_pcfx@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_pcfx@2x.png"; sourceTree = "<group>"; };
 		8745D75D1BF9A72A005E8699 /* OE5200SystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OE5200SystemController.h; sourceTree = "<group>"; };
 		8745D75E1BF9A72B005E8699 /* OE5200SystemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OE5200SystemController.m; sourceTree = "<group>"; };
+		8759F0851F560542009CBC01 /* controller_saturn_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_saturn_mask@2x.png"; sourceTree = "<group>"; };
+		8759F0861F560542009CBC01 /* controller_saturn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_saturn@2x.png"; sourceTree = "<group>"; };
 		875CC31F1E221D4300E3BEB9 /* controller_tg16cd_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_tg16cd_mask@2x.png"; sourceTree = "<group>"; };
 		875CC3201E221D4300E3BEB9 /* controller_tg16cd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_tg16cd@2x.png"; sourceTree = "<group>"; };
 		875CC3231E221D9800E3BEB9 /* controller_tg16_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_tg16_mask@2x.png"; sourceTree = "<group>"; };
@@ -2676,7 +2693,6 @@
 		94A225F31707614500098DA0 /* Controller-Mappings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Controller-Mappings.plist"; sourceTree = "<group>"; };
 		94A225F41707614500098DA0 /* Controller-Preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Controller-Preferences.plist"; sourceTree = "<group>"; };
 		94A225F51707614500098DA0 /* Keyboard-Mappings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Keyboard-Mappings.plist"; sourceTree = "<group>"; };
-		94A225F61707614500098DA0 /* saturn_jap_library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saturn_jap_library.png; sourceTree = "<group>"; };
 		94A225F71707614500098DA0 /* saturn_library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saturn_library.png; sourceTree = "<group>"; };
 		94A225FF1707616F00098DA0 /* OEComputerSystemResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OEComputerSystemResponder.h; sourceTree = "<group>"; };
 		94A226001707616F00098DA0 /* OEComputerSystemResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OEComputerSystemResponder.m; sourceTree = "<group>"; };
@@ -3770,6 +3786,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				87191CC51F6F5524006D2EE3 /* dsa_pub.pem */,
 				8F071F3A1C255362007B76DA /* Credits.rtf */,
 				1B32150F14DDD03200C5B50A /* Setup Assistant Animation Resources */,
 				C68A54E41516AD3C001053F2 /* OEDatabase.xcdatamodeld */,
@@ -5362,13 +5379,20 @@
 			isa = PBXGroup;
 			children = (
 				94A225F71707614500098DA0 /* saturn_library.png */,
-				94A225F61707614500098DA0 /* saturn_jap_library.png */,
+				870320AC1F6267BF00470B55 /* saturn_library@2x.png */,
+				870320AA1F6267BF00470B55 /* saturn_library_jp.png */,
+				870320AB1F6267BF00470B55 /* saturn_library_jp@2x.png */,
 				94A225F11707614500098DA0 /* controller_saturn_mask.png */,
 				94A225F21707614500098DA0 /* controller_saturn.png */,
+				8759F0851F560542009CBC01 /* controller_saturn_mask@2x.png */,
+				8759F0861F560542009CBC01 /* controller_saturn@2x.png */,
+				870320A11F5CCB2000470B55 /* controller_saturn_jp.png */,
+				870320A21F5CCB2000470B55 /* controller_saturn_jp@2x.png */,
 				94A224D71707556D00098DA0 /* Saturn-Info.plist */,
 				94A225F51707614500098DA0 /* Keyboard-Mappings.plist */,
 				94A225F31707614500098DA0 /* Controller-Mappings.plist */,
 				94A225F41707614500098DA0 /* Controller-Preferences.plist */,
+				870320A81F5CCB3200470B55 /* Controller-Preferences-JAP.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -6740,7 +6764,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					081A46251B95744A00565444 = {
 						CreatedOnToolsVersion = 6.4;
@@ -6758,7 +6782,7 @@
 						CreatedOnToolsVersion = 7.1.1;
 					};
 					8D15AC270486D014006FF6A4 = {
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -7049,6 +7073,7 @@
 				8F071F3B1C255362007B76DA /* Credits.rtf in Resources */,
 				83DEF7C1196C403400C7DF57 /* ControlLabels.strings in Resources */,
 				83B04E421968610F00CB985E /* Localizable.strings in Resources */,
+				87191CC61F6F5524006D2EE3 /* dsa_pub.pem in Resources */,
 				83FE9642196859B100DD8DB9 /* OEPrefCoresController.xib in Resources */,
 				83FE9646196859D300DD8DB9 /* OEPrefGameplayController.xib in Resources */,
 				8F071F391C25534E007B76DA /* Preferences.xib in Resources */,
@@ -7421,9 +7446,16 @@
 				94A225F81707614500098DA0 /* controller_saturn_mask.png in Resources */,
 				94A225F91707614500098DA0 /* controller_saturn.png in Resources */,
 				94A225FA1707614500098DA0 /* Controller-Mappings.plist in Resources */,
+				870320A41F5CCB2000470B55 /* controller_saturn_jp@2x.png in Resources */,
+				8759F0881F560542009CBC01 /* controller_saturn@2x.png in Resources */,
+				870320A31F5CCB2000470B55 /* controller_saturn_jp.png in Resources */,
 				94A225FB1707614500098DA0 /* Controller-Preferences.plist in Resources */,
+				870320AD1F6267BF00470B55 /* saturn_library_jp.png in Resources */,
 				94A225FC1707614500098DA0 /* Keyboard-Mappings.plist in Resources */,
-				94A225FD1707614500098DA0 /* saturn_jap_library.png in Resources */,
+				870320AF1F6267BF00470B55 /* saturn_library@2x.png in Resources */,
+				8759F0871F560542009CBC01 /* controller_saturn_mask@2x.png in Resources */,
+				870320AE1F6267BF00470B55 /* saturn_library_jp@2x.png in Resources */,
+				870320A91F5CCB3200470B55 /* Controller-Preferences-JAP.plist in Resources */,
 				94A225FE1707614500098DA0 /* saturn_library.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10635,7 +10667,8 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) CG_SUPPORT";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpenEmu-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
@@ -10677,7 +10710,8 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) CG_SUPPORT";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpenEmu-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = x86_64;
 			};
 			name = Release;
@@ -10690,12 +10724,18 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_EXPERIMENTAL = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -10738,12 +10778,18 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_EXPERIMENTAL = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
