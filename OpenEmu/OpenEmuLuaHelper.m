@@ -198,7 +198,7 @@ void CallRegisteredLuaFunctions(enum LuaCallID calltype) {
         {
             int errorcode = lua_pcall(L, 0, 0, 0);
             if (errorcode)
-                NSLog(@"%@", @"error");
+                NSLog(@"%@ %d", @"error", errorcode);
         }
         else
         {
@@ -218,6 +218,17 @@ static int emu_registerexit(lua_State *L) {
     lua_getfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEXIT]);
     lua_insert(L,1);
     lua_setfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_BEFOREEXIT]);
+    //    StopScriptIfFinished(luaStateToUIDMap[L]);
+    return 1;
+}
+
+static int emu_registerafter(lua_State *L) {
+    if (!lua_isnil(L,1))
+        luaL_checktype(L, 1, LUA_TFUNCTION);
+    lua_settop(L,1);
+    lua_getfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_AFTEREMULATION]);
+    lua_insert(L,1);
+    lua_setfield(L, LUA_REGISTRYINDEX, luaCallIDStrings[LUACALL_AFTEREMULATION]);
     //    StopScriptIfFinished(luaStateToUIDMap[L]);
     return 1;
 }
@@ -509,6 +520,7 @@ static int bitbit (lua_State *L)
     {
         {"emulating", emu_emulating},
         {"registerexit", emu_registerexit},
+        {"registerafter", emu_registerafter},
         {NULL,NULL},
     };
     
