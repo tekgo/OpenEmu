@@ -98,4 +98,6 @@ extern NSString *const OEScreenshotPropertiesKey;
 - (void)setScreenSize:(OEIntSize)newScreenSize aspectSize:(OEIntSize)newAspectSize withIOSurfaceID:(IOSurfaceID)newSurfaceID;
 - (void)setDiscCount:(NSUInteger)discCount;
 
+- (void)setImage:(NSImage*)image;
+
 @end

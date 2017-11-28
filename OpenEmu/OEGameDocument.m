@@ -1536,4 +1536,9 @@ typedef enum : NSUInteger
     [_gameViewController setDiscCount:discCount];
 }
 
+- (void)setImage:(NSImage*)image
+{
+    [_gameViewController setImage:image];
+}
+
 @end

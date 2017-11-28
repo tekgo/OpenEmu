@@ -759,6 +759,10 @@
 
 #pragma mark - OpenEmuLuaHelperDelegate
 
+- (void)setImage:(NSImage*)image {
+    [self.gameCoreOwner setImage: image];
+}
+
 - (BOOL)isCoreScriptable {
     return [_gameCore conformsToProtocol: @protocol(OEScriptableGameCore)];
 }

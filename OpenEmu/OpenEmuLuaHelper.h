@@ -14,6 +14,8 @@
 - (void) setData: (NSData *)data atAddress: (UInt32)address;
 - (NSData *) getBytesAtAddress: (UInt32)address length: (UInt) length;
 
+- (void)setImage:(NSImage*)image;
+
 @end
 
 @interface OpenEmuLuaHelper : NSObject

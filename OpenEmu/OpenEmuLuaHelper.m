@@ -14,6 +14,7 @@
 @interface OpenEmuLuaHelper ()
 
 @property(readwrite, strong) LuaCocoa *lua;
+@property(readwrite, strong) NSImage *image;
 
 @end
 
@@ -171,6 +172,8 @@ void CallRegisteredLuaFunctions(enum LuaCallID calltype);
 
 - (void)onGUI {
     CallRegisteredLuaFunctions(LUACALL_AFTEREMULATIONGUI);
+    
+    [self updateImage];
 }
 
 - (void)onBeforeSave {
@@ -184,6 +187,29 @@ void CallRegisteredLuaFunctions(enum LuaCallID calltype);
 - (void)dealloc
 {
     [self onExit];
+}
+
+-(void)drawText:(NSString*) text X:(int)x Y:(int)y {
+    
+    [self.image lockFocus];
+    [text drawAtPoint: CGPointMake(x, 256 - y)  withAttributes:@{
+                                                           NSForegroundColorAttributeName : [NSColor whiteColor],
+                                                           NSFontAttributeName :  [NSFont systemFontOfSize:12]
+                                                           }];
+    [self.image unlockFocus];
+    
+}
+
+- (void)updateImage
+{
+    [self.delegate setImage: self.image];
+    self.image = [self createBlankImage];
+}
+
+-(NSImage *)createBlankImage
+{
+    NSImage *image = [[NSImage alloc] initWithSize: CGSizeMake(256, 256)];
+    return image;
 }
 
 void CallRegisteredLuaFunctions(enum LuaCallID calltype) {
@@ -245,7 +271,16 @@ static int gui_register(lua_State *L) {
 }
 
 static int gui_text(lua_State *L) {
-    // TODO
+    extern int font_height;
+    const char *msg;
+    int x, y;
+    
+    x = (int)lua_tointeger(L,1);
+    y = (int)lua_tointeger(L,2);
+    msg = lua_tostring(L,3);
+    
+    [helperRef drawText: [NSString stringWithUTF8String:msg] X: x Y: y];
+    
     return 1;
 }
 
