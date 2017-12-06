@@ -294,10 +294,12 @@
 		5AC349331D89EB7B0089B26F /* GameIntegralScalingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC349321D89EB7B0089B26F /* GameIntegralScalingDelegate.swift */; };
 		5AECA1491BE1D25800C3B4E2 /* ToolbarSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AECA1481BE1D25800C3B4E2 /* ToolbarSegmentedCell.swift */; };
 		7D229BC41F50BA3400457B5A /* OpenEmuLuaHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D229BC31F50BA3400457B5A /* OpenEmuLuaHelper.m */; };
-		7D229BC81F50BBBE00457B5A /* OpenEmuLuaHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D229BC31F50BA3400457B5A /* OpenEmuLuaHelper.m */; };
 		7DA85BC71F4F3FCF0098042E /* LuaCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA85BC61F4F3FCF0098042E /* LuaCocoa.framework */; };
 		7DA85BC81F4F3FCF0098042E /* LuaCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA85BC61F4F3FCF0098042E /* LuaCocoa.framework */; };
 		7DA85BCD1F4F42140098042E /* Foo.lua in Resources */ = {isa = PBXBuildFile; fileRef = 7DA85BCC1F4F42140098042E /* Foo.lua */; };
+		7DE4C79A1FD9E7C20060E981 /* luaAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 7DE4C7981FD9E7C20060E981 /* luaAPI.c */; };
+		7DE4C7A31FDA11DC0060E981 /* OpenEmuLuaHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D229BC31F50BA3400457B5A /* OpenEmuLuaHelper.m */; };
+		7DE4C7A41FDA11DF0060E981 /* luaAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 7DE4C7981FD9E7C20060E981 /* luaAPI.c */; };
 		7DF673081F4F450800DD69D2 /* LuaCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA85BC61F4F3FCF0098042E /* LuaCocoa.framework */; };
 		7DF673091F4F450800DD69D2 /* LuaCocoa.framework in Copy Frameworks to App Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA85BC61F4F3FCF0098042E /* LuaCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		820EB7421483F9A2008EC398 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6711810136368330034379A /* Cocoa.framework */; };
@@ -1878,6 +1880,9 @@
 		7D229BC31F50BA3400457B5A /* OpenEmuLuaHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenEmuLuaHelper.m; sourceTree = "<group>"; };
 		7DA85BC61F4F3FCF0098042E /* LuaCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LuaCocoa.framework; sourceTree = "<group>"; };
 		7DA85BCC1F4F42140098042E /* Foo.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Foo.lua; sourceTree = "<group>"; };
+		7DE4C7981FD9E7C20060E981 /* luaAPI.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = luaAPI.c; sourceTree = "<group>"; };
+		7DE4C7991FD9E7C20060E981 /* luaAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = luaAPI.h; sourceTree = "<group>"; };
+		7DEE80781FD8B50400F5F0C6 /* LuaHelperHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LuaHelperHeaders.h; sourceTree = "<group>"; };
 		820EB74A1483F9A2008EC398 /* NeoGeo Pocket.oesystemplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NeoGeo Pocket.oesystemplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		820EB74E1483F9D3008EC398 /* controller_ngp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_ngp.png; sourceTree = "<group>"; };
 		820EB7541483F9D3008EC398 /* OENGPSystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OENGPSystemController.h; sourceTree = "<group>"; };
@@ -3594,6 +3599,9 @@
 				C6096199179B6E3F00239067 /* OpenEmuXPCHelperApp.m */,
 				7D229BC21F50BA3400457B5A /* OpenEmuLuaHelper.h */,
 				7D229BC31F50BA3400457B5A /* OpenEmuLuaHelper.m */,
+				7DE4C7991FD9E7C20060E981 /* luaAPI.h */,
+				7DE4C7981FD9E7C20060E981 /* luaAPI.c */,
+				7DEE80781FD8B50400F5F0C6 /* LuaHelperHeaders.h */,
 			);
 			name = "Helper App (IOSurface helper)";
 			sourceTree = "<group>";
@@ -7731,6 +7739,7 @@
 				C6772A851710C9C400ED580A /* OECorePlugin.m in Sources */,
 				7D229BC41F50BA3400457B5A /* OpenEmuLuaHelper.m in Sources */,
 				C609619B179B74DE00239067 /* OESystemPlugin.m in Sources */,
+				7DE4C79A1FD9E7C20060E981 /* luaAPI.c in Sources */,
 				1BEF2CA011684E7E0090F72B /* OEGameAudio.m in Sources */,
 				3D41E8EC1BD4959300A76EFD /* OEOpenGL2GameRenderer.m in Sources */,
 				1BEF2A9C11682A5E0090F72B /* OpenEmuHelperApp.m in Sources */,
@@ -7860,7 +7869,7 @@
 				53439AA213B92C9D005C0CC8 /* OEDBGame.m in Sources */,
 				53439AA313B92C9D005C0CC8 /* OEDBSystem.m in Sources */,
 				53439AA613B92CC7005C0CC8 /* OELibraryController.m in Sources */,
-				7D229BC81F50BBBE00457B5A /* OpenEmuLuaHelper.m in Sources */,
+				7DE4C7A31FDA11DC0060E981 /* OpenEmuLuaHelper.m in Sources */,
 				5A9606EA1C0BD2BD0089B494 /* DLog.swift in Sources */,
 				8306CD3E1BD3DB180025BC6C /* OEGameCollectionViewController.m in Sources */,
 				53439AAB13B92CE6005C0CC8 /* OECollectionViewController.m in Sources */,
@@ -7893,6 +7902,7 @@
 				53439B7A13B933B8005C0CC8 /* OEGameControlsBar.m in Sources */,
 				5A46AC411DC66D8300771B3B /* OEGameViewController+TouchBar.swift in Sources */,
 				53439B8213B933E9005C0CC8 /* OEHUDWindow.m in Sources */,
+				7DE4C7A41FDA11DF0060E981 /* luaAPI.c in Sources */,
 				836AEA711975BFE100B86935 /* OEGridCell.m in Sources */,
 				C6289C32135B215B00EEE97C /* OESystemPlugin.m in Sources */,
 				5A9606E81C0BCD350089B494 /* NSImage+DrawingAdditions.swift in Sources */,

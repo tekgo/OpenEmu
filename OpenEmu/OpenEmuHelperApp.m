@@ -46,7 +46,7 @@
 #define BOOL_STR(b) ((b) ? "YES" : "NO")
 #endif
 
-@interface OpenEmuHelperApp () <OEGameCoreDelegate, OEGlobalEventsHandler, OpenEmuLuaHelperDelegate>
+@interface OpenEmuHelperApp () <OEGameCoreDelegate, OEGlobalEventsHandler, OpenEmuScriptingHelperDelegate>
 @property BOOL loadedRom;
 
 @property(readonly) OEIntSize screenSize;
@@ -757,11 +757,7 @@
     [self.gameCoreOwner takeScreenshot];
 }
 
-#pragma mark - OpenEmuLuaHelperDelegate
-
-- (void)setImage:(NSImage*)image {
-    [self.gameCoreOwner setImage: image];
-}
+#pragma mark - OpenEmuScriptingHelperDelegate
 
 - (BOOL)isCoreScriptable {
     return [_gameCore conformsToProtocol: @protocol(OEScriptableGameCore)];
@@ -778,6 +774,25 @@
         return [(id<OEScriptableGameCore>)_gameCore getBytesAtAddress:address length: length];
     }
     return 0;
+}
+
+- (void) setColor:(UInt32)color atX:(UInt)x y: (UInt) y {
+    if ([self isCoreScriptable] == YES) {
+        [(id<OEScriptableGameCore>)_gameCore setColor:color atX:x y:y];
+    }
+}
+
+- (CGSize) scriptScreenSize {
+    if ([self isCoreScriptable] == YES) {
+        return [(id<OEScriptableGameCore>)_gameCore scriptScreenSize];
+    }
+    return CGSizeZero;
+}
+
+- (void) drawData:(NSData *)data withSize:(CGSize)size {
+    if ([self isCoreScriptable] == YES) {
+        [(id<OEScriptableGameCore>)_gameCore drawData: data withSize: size];
+    }
 }
 
 @end

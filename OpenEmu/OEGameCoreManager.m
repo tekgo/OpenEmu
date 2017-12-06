@@ -182,4 +182,8 @@ NSString * const OEGameCoreErrorDomain = @"OEGameCoreErrorDomain";
     [self.gameCoreHelper systemBindingsDidUnsetEvent:event forBinding:bindingDescription playerNumber:playerNumber];
 }
 
+- (void)loadScriptWithURL:(NSURL*)url {
+    [self.gameCoreHelper loadScriptAtURL:url];
+}
+
 @end

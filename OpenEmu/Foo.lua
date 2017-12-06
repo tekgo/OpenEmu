@@ -9,7 +9,7 @@ print("script loaded");
 --print(XOR(2, 10))
 
 local function callback()
-    print("callback")
+    gui.text(10, 200, "1 23 0/ 5")
 end
 
 print(emu)
@@ -18,5 +18,5 @@ for k, v in pairs(emu) do
     print(k)
 end
 
---emu.registerafter(callback)
+gui.register(callback);
 

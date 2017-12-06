@@ -80,7 +80,6 @@ NSString *const OEScreenshotPropertiesKey = @"screenshotProperties";
 {
     // Standard game document stuff
     OEGameView *_gameView;
-    NSImageView *_imageView;
     OEIntSize   _screenSize;
     OEIntSize   _aspectSize;
     BOOL        _pausedByGoingToBackground;
@@ -123,10 +122,6 @@ NSString *const OEScreenshotPropertiesKey = @"screenshotProperties";
         }
         
         [[self view] addSubview:_gameView];
-        
-        _imageView = [[NSImageView alloc] initWithFrame:[[self view] bounds]];
-        [_imageView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-        [[self view] addSubview: _imageView];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidChangeFrame:) name:NSViewFrameDidChangeNotification object:_gameView];
 
@@ -354,14 +349,6 @@ NSString *const OEScreenshotPropertiesKey = @"screenshotProperties";
 - (void)gameView:(OEGameView *)gameView didReceiveMouseEvent:(OEEvent *)event
 {
     [[self document] gameViewController:self didReceiveMouseEvent:event];
-}
-
-- (void)setImage:(NSImage*)image
-{
-    [_imageView setWantsLayer:YES];
-    _imageView.imageScaling = NSImageScaleProportionallyUpOrDown;
-    _imageView.layer.backgroundColor = [[NSColor clearColor] CGColor];
-    [_imageView setImage: image];
 }
 
 @end
