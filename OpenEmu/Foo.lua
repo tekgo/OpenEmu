@@ -9,7 +9,7 @@ print("script loaded");
 --print(XOR(2, 10))
 
 local function callback()
-    gui.text(10, 200, "1 23 0/ 5")
+    gui.text(10, 200, "abcdefghijklmnopqrstuvwxyz")
 end
 
 print(emu)

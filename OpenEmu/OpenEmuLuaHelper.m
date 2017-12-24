@@ -148,21 +148,28 @@ OpenEmuLuaHelper * helperRef;
 
 - (void)drawText: (NSString*)msg atX:(int)x atY:(int)y
 {
-    [self drawBox:CGRectMake(x - 1, y - 1, [msg length] * 4 + 1, 7) fill: 0x000000FF outline: 0x000000FF];
+    [self drawBox:CGRectMake(x - 1, y - 1, [msg length] * 4 + 1, 9) fill: 0x000000FF outline: 0x000000FF];
     
     int offsetX = x;
     
     for (int i = 0; i < [msg length]; i++) {
         unichar c = [msg characterAtIndex:i];
         
-        int charIdx = (c - 32) * 15;
-        
-        if (charIdx < sizeof(text_font_data) && charIdx >= 0) {
-            for (int cy = 0; cy < 5; cy++) {
+        int charIdx = (c-32)*7*4;
+        if (charIdx < sizeof(Small_Font_Data) && charIdx >= 0) {
+            const unsigned char* Cur_Glyph = (const unsigned char*)&Small_Font_Data + charIdx;
+            for (int cy = 0; cy < 8 ; cy++) {
+                unsigned int glyphLine = *((unsigned int*)Cur_Glyph + cy);
                 for (int cx = 0; cx < 3; cx++) {
-                    if (text_font_data[charIdx + cx + cy * 3] == 1) {
-                        int idx = (cx + offsetX) + (y + cy) * (int)self.screenSize.width;
-                        self.screenBuffer[idx] = 0xFFFFFFFF;
+                    if (cx + offsetX < self.screenSize.width && (y + cy) < self.screenSize.height) {
+                        int shift = cx << 3;
+                        int mask = 0xFF << shift;
+                        int intensity = (glyphLine & mask) >> shift;
+                        
+                        if (intensity) {
+                            int idx = (cx + offsetX) + (y + cy) * (int)self.screenSize.width;
+                            self.screenBuffer[idx] = 0xFFFFFFFF;
+                        }
                     }
                 }
             }
